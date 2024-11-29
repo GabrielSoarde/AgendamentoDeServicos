@@ -110,9 +110,10 @@ Se você ainda não tem o Postman instalado, faça o download e instale-o no seu
 
 ```json
 {
-    "client": {"name": "João",
-    "email": "joao@example.com",
-    "phone": "(11) 98765-4321"
+    "client": {
+      "name": "João",
+      "email": "joao@example.com",
+      "phone": "(11) 98765-4321"
     },
     "date": "2024-12-01",
     "time": "10:00",
@@ -131,9 +132,9 @@ Se você ainda não tem o Postman instalado, faça o download e instale-o no seu
 ```
 {
     "client": {
-    "name": "Carlos Ronaldo", 
-    "email": "carlos.ronaldo@example.com", 
-    "phone": "(11) 98765-4567"
+      "name": "Carlos Ronaldo", 
+      "email": "carlos.ronaldo@example.com", 
+      "phone": "(11) 98765-4567"
     },
     "date": "2025-06-10",
     "time": "13:00",
