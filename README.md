@@ -129,7 +129,8 @@ Se você ainda não tem o Postman instalado, faça o download e instale-o no seu
 `http://localhost:8080/scheduling/1`
 3. Vá para a aba **Body** e selecione a opção **raw**.
 4. No campo de texto, insira o JSON com as informações a serem atualizadas, como o exemplo abaixo:
-```
+   
+```json
 {
     "client": {
       "name": "Carlos Ronaldo", 
