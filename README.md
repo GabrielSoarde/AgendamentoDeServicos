@@ -145,7 +145,7 @@ Se você ainda não tem o Postman instalado, faça o download e instale-o no seu
 ```
 e clique en SEND. O Postman deve retornar a confirmação de que o agendamento foi atualizado.
 
-## Deletar um Client:
+## Deletar um Agendamento:
 1. No Postman, selecione o método `DELETE`.
 2. Na URL insira `http://localhost:8080/scheduling/{id}` subistituindo {id} pelo numero desejado.
 3. Clique em SEND e o Postman deve retornar uma confirmação de que o agendamento foi deletado.
