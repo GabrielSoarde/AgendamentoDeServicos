@@ -3,11 +3,18 @@
 Este projeto é um **Sistema de Agendamento de Serviços** desenvolvido com **Spring Boot**. Ele permite gerenciar agendamentos de clientes para serviços, incluindo funcionalidades para adicionar, editar, excluir e listar agendamentos.
 
 ## Tecnologias Utilizadas
+- **Java**: Linguagem de programação utilizada para o backend.
+- **Spring Boot**: Framework utilizado para o desenvolvimento da API RESTful.
+- **PostgreSQL**: Banco de dados utilizado para persistir as informações.
+- **Postman**: Ferramenta utilizada para testar a API.
 
-- **Backend:**
-  - Spring Boot (Java)
-  - JPA (Java Persistence API) para persistência de dados
-  - PostgreSQL como banco de dados
+# Documentação da API
+
+## Endpoints
+- GET /scheduling -- Retorna todos os agendamentos cadastrados.
+- POST /scheduling -- Cria um novo agendamento.
+- PUT /scheduling/{id} -- Atualiza um agendamento existente.
+- DELETE /scheduling/{id} -- Deleta um agendamento.  
 
 ## Requisitos
 
@@ -45,13 +52,13 @@ As principais dependências estão listadas no **pom.xml**. Não esqueça de rod
    
 2. Configure as variáveis de ambiente:
    
-- Abra o terminal (CMD) e digite:
+- Abra o terminal (CMD), ou pelo próprio terminal da sua IDE, e digite:
 
       $env:BDNAME="NOME DO BANCO DE DADOS"
       $env:USER="SEU EMAIL"
       $env:PASSWORD="SUA SENHA"
   
-- Para verificar se está tudo correto, digite no terminal (CMD):
+- Para verificar se está tudo correto, digite no terminal (CMD), ou no terminal da sua IDE:
 
       echo $env:BDNAME
       echo $env:USER
