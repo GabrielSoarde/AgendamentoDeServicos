@@ -29,7 +29,7 @@ O sistema utiliza o arquivo `application.properties` ou `application.yml` para c
 ### Banco de Dados
 1. Crie um banco de dados **PostgreSQL** com o nome **Agendamentos**:
    
-       CREATE DATABASE clients;
+       CREATE DATABASE Agendamentos;
 
 ## Dependências
 As principais dependências estão listadas no **pom.xml**. Não esqueça de rodar o maven para baixar as dependências.
@@ -40,8 +40,8 @@ As principais dependências estão listadas no **pom.xml**. Não esqueça de rod
 
 1. Clone este repositório:
  
-        git clone https://github.com/GabrielSoarde/cadastro-cliente.git
-        cd cadastro-cliente
+        git clone https://github.com/GabrielSoarde/AgendamentoDeServicos.git
+        cd AgendamentoDeServicos
    
 2. Configure as variáveis de ambiente:
    
@@ -53,8 +53,9 @@ As principais dependências estão listadas no **pom.xml**. Não esqueça de rod
   
 - Para verificar se está tudo correto, digite no terminal (CMD):
 
-      echo $env:SPRING_MAIL_USERNAME
-      echo $env:SPRING_MAIL_PASSWORD
+      echo $env:BDNAME
+      echo $env:USER
+      echo $env:PASSWORD
   
 3. Compile e execute o projeto:
    
