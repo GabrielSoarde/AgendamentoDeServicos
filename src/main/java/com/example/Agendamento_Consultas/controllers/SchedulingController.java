@@ -66,10 +66,7 @@ public class SchedulingController {
     public ResponseEntity<Scheduling> updateScheduling(@PathVariable Long id, @RequestBody Scheduling scheduling) {
         return schedulingRepository.findById(id)
                 .map(existingScheduling -> {
-                    // Atualiza os campos
                     existingScheduling.updateFrom(scheduling); // Método para atualizar os dados
-
-                    // Salva e retorna o agendamento atualizado
                     return ResponseEntity.ok(schedulingRepository.save(existingScheduling));
                 })
                 .orElseGet(() -> ResponseEntity.notFound().build());
