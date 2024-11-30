@@ -15,8 +15,6 @@ public class Service {
 
     private String title;
 
-    private Integer time;
-
     public Service(){
     }
 
@@ -40,11 +38,4 @@ public class Service {
         this.title = title;
     }
 
-    public Integer getTime() {
-        return time;
-    }
-
-    public void setTime(Integer time) {
-        this.time = time;
-    }
 }

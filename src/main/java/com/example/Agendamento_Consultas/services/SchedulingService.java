@@ -55,13 +55,13 @@ public class SchedulingService {
 
     @PostMapping("/scheduling")
     public ResponseEntity<Scheduling> saveScheduling(@RequestBody Scheduling scheduling) {
-        Client client = scheduling.getClient();
-        if (client.getId() == null) {
-            client = clientRepository.save(client);
-        }
+        Client client = Optional.ofNullable(scheduling.getClient().getId())
+                .flatMap(clientRepository::findById)
+                .orElseGet(() -> clientRepository.save(scheduling.getClient()));
+
         scheduling.setClient(client);
         Scheduling savedScheduling = schedulingRespository.save(scheduling);
-        return ResponseEntity.ok(savedScheduling); // Retorna o agendamento salvo
+        return ResponseEntity.ok(savedScheduling);
     }
 
 }

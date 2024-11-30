@@ -15,4 +15,5 @@ public interface SchedulingRepository extends JpaRepository<Scheduling, Long> {
     Optional<Scheduling> findByDateAndTime(LocalDate date, LocalTime time);
     List<Scheduling> findByClient(Client client);
     List<Scheduling>findByClientId(Long client);
+
 }

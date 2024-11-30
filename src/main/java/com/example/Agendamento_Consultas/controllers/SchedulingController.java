@@ -22,7 +22,9 @@ public class SchedulingController {
     private final SchedulingRepository schedulingRepository;
     private final ServiceRepository serviceRepository;
     private final ClientRepository clientRepository;
-    public SchedulingController(SchedulingService schedulingService, SchedulingRepository schedulingRepository, ServiceRepository serviceRepository, ClientRepository clientRepository) {
+
+    public SchedulingController(SchedulingService schedulingService, SchedulingRepository schedulingRepository,
+                                ServiceRepository serviceRepository, ClientRepository clientRepository) {
         this.schedulingService = schedulingService;
         this.schedulingRepository = schedulingRepository;
         this.serviceRepository = serviceRepository;
@@ -32,14 +34,10 @@ public class SchedulingController {
     @PostMapping
     public Scheduling createScheduling(@RequestBody Scheduling scheduling) {
         if (scheduling.getService() != null && scheduling.getService().getTitle() != null) {
-            Service service = serviceRepository.findByTitle(scheduling.getService().getTitle());
+            Service service = serviceRepository.findByTitle(scheduling.getService().getTitle())
+                    .orElseGet(() -> serviceRepository.save(new Service(scheduling.getService().getTitle())));
 
-            if (service == null) {
-                service = new Service(scheduling.getService().getTitle());
-                serviceRepository.save(service);
-            }
             scheduling.setService(service);
-            scheduling.setPrice(scheduling.getPrice());
         }
         return schedulingRepository.save(scheduling);
     }
@@ -66,21 +64,15 @@ public class SchedulingController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Scheduling> updateScheduling(@PathVariable Long id, @RequestBody Scheduling scheduling) {
-        Optional<Scheduling> existingScheduling = schedulingRepository.findById(id);
-        if (!existingScheduling.isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
+        return schedulingRepository.findById(id)
+                .map(existingScheduling -> {
+                    // Atualiza os campos
+                    existingScheduling.updateFrom(scheduling); // Método para atualizar os dados
 
-        Scheduling updateScheduling = existingScheduling.get();
-        updateScheduling.setClient(scheduling.getClient());
-        updateScheduling.setDate(scheduling.getDate());
-        updateScheduling.setTime(scheduling.getTime());
-        updateScheduling.setService(scheduling.getService());
-        updateScheduling.setPrice(scheduling.getPrice());
-
-        schedulingRepository.save(updateScheduling);
-
-        return ResponseEntity.ok(updateScheduling);
+                    // Salva e retorna o agendamento atualizado
+                    return ResponseEntity.ok(schedulingRepository.save(existingScheduling));
+                })
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
 }

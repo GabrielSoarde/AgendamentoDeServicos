@@ -17,7 +17,7 @@ public class Scheduling {
     @JoinColumn(name = "client_id")
     private Client client;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "service_id")
     private Service service;
 
@@ -26,6 +26,14 @@ public class Scheduling {
     private LocalTime time;
 
     private Double price;
+
+    public void updateFrom(Scheduling scheduling) {
+        this.client = scheduling.getClient();
+        this.date = scheduling.getDate();
+        this.time = scheduling.getTime();
+        this.service = scheduling.getService();
+        this.price = scheduling.getPrice();
+    }
 
     public Double getPrice() {
         return price;
